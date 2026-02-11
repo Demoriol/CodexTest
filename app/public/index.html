@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaduly</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="authView" class="center-panel">
+      <h1>Gaduly</h1>
+      <p>Discord-like chat (self-hosted)</p>
+      <input id="username" placeholder="Login" />
+      <input id="password" type="password" placeholder="Hasło" />
+      <div class="auth-actions">
+        <button id="loginBtn">Zaloguj</button>
+        <button id="registerBtn">Zarejestruj</button>
+      </div>
+      <p id="authMsg"></p>
+    </div>
+
+    <div id="appView" class="layout hidden">
+      <aside class="servers" id="servers"></aside>
+      <aside class="channels">
+        <h3>Kanały</h3>
+        <div><strong>Tekstowe</strong><div id="textChannels"></div></div>
+        <div><strong>Głosowe</strong><div id="voiceChannels"></div></div>
+      </aside>
+      <main class="chat">
+        <header>
+          <h2 id="currentChannel">Wybierz kanał</h2>
+          <button id="voiceSettingsBtn">Ustawienia kanału głosowego</button>
+        </header>
+        <section id="messages"></section>
+        <form id="msgForm" class="msg-form">
+          <input id="msgInput" placeholder="Napisz wiadomość..." />
+          <input id="emojiInput" placeholder="Emotki np. 😀🔥" />
+          <input id="imageInput" type="file" accept="image/*" />
+          <button>Wyślij</button>
+        </form>
+      </main>
+      <aside class="settings">
+        <h3>Ustawienia</h3>
+        <input id="nickname" placeholder="Nick" />
+        <input id="avatar" type="file" accept="image/*" />
+        <label>Input audio <input id="audioInput" value="default" /></label>
+        <label>Output audio <input id="audioOutput" value="default" /></label>
+        <label>Czułość mikrofonu <input id="micSensitivity" type="range" min="0" max="100" /></label>
+        <label>Automatic voice gain <input id="autoGain" type="checkbox" /></label>
+        <label>Głośność dźwięku <input id="speakerVolume" type="range" min="0" max="100" /></label>
+        <label>Głośność mikrofonu <input id="micVolume" type="range" min="0" max="100" /></label>
+        <button id="saveProfile">Zapisz profil</button>
+        <hr />
+        <button id="toggleMic">Wycisz mikrofon</button>
+        <button id="toggleAll">Wycisz mikrofon + głośniki</button>
+      </aside>
+    </div>
+
+    <dialog id="voiceDialog">
+      <h3>Edycja kanału głosowego</h3>
+      <input id="voiceName" placeholder="Nazwa" />
+      <input id="voiceMax" type="number" min="1" max="200" placeholder="Max osób" />
+      <input id="voiceBitrate" type="number" min="8" max="512" placeholder="kbps" />
+      <input id="voicePassword" placeholder="Hasło (opcjonalne)" />
+      <button id="saveVoice">Zapisz</button>
+      <button onclick="voiceDialog.close()">Anuluj</button>
+    </dialog>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
