@@ -1,0 +1,7 @@
+[
+  { "username": "admin", "password": "ZmienMnie123!", "nickname": "Administrator" },
+  { "username": "ola", "password": "OlaHaslo123!", "nickname": "Ola" },
+  { "username": "jan", "password": "JanHaslo123!", "nickname": "Jan" },
+  { "username": "ania", "password": "AniaHaslo123!", "nickname": "Ania" },
+  { "username": "tomek", "password": "TomekHaslo123!", "nickname": "Tomek" }
+]
